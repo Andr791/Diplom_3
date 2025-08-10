@@ -47,70 +47,86 @@ public class General {
         WebElement element = driver.findElement(skolkoStoit);
         ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView();", element);
         element.click();
+        new WebDriverWait(driver, Duration.ofSeconds(2))
+                .until(ExpectedConditions.elementToBeClickable(skolkoStoitText));
         String text = driver.findElement(skolkoStoitText).getText();
         assertEquals("Сутки — 400 рублей. Оплата курьеру — наличными или картой.", text);
     }
 
     @Test
     public void srazuNeskolkoTest() {
-        WebElement element2 = driver.findElement(srazuNeskolko);
-        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView();", element2);
-        element2.click();
-        String text2 = driver.findElement(srazuNeskolkoText).getText();
-        assertEquals("Пока что у нас так: один заказ — один самокат. Если хотите покататься с друзьями, можете просто сделать несколько заказов — один за другим.", text2);
+        WebElement element = driver.findElement(srazuNeskolko);
+        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView();", element);
+        element.click();
+        new WebDriverWait(driver, Duration.ofSeconds(2))
+                .until(ExpectedConditions.elementToBeClickable(srazuNeskolkoText));
+        String text = driver.findElement(srazuNeskolkoText).getText();
+        assertEquals("Пока что у нас так: один заказ — один самокат. Если хотите покататься с друзьями, можете просто сделать несколько заказов — один за другим.", text);
     }
 
     @Test
     public void vremyaArendyTest() {
-        WebElement element3 = driver.findElement(vremyaArendy);
-        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView();", element3);
-        element3.click();
-        String text3 = driver.findElement(vremyaArendyText).getText();
-        assertEquals("Допустим, вы оформляете заказ на 8 мая. Мы привозим самокат 8 мая в течение дня. Отсчёт времени аренды начинается с момента, когда вы оплатите заказ курьеру. Если мы привезли самокат 8 мая в 20:30, суточная аренда закончится 9 мая в 20:30.", text3);
+        WebElement element = driver.findElement(vremyaArendy);
+        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView();", element);
+        element.click();
+        new WebDriverWait(driver, Duration.ofSeconds(2))
+                .until(ExpectedConditions.elementToBeClickable(vremyaArendyText));
+        String text = driver.findElement(vremyaArendyText).getText();
+        assertEquals("Допустим, вы оформляете заказ на 8 мая. Мы привозим самокат 8 мая в течение дня. Отсчёт времени аренды начинается с момента, когда вы оплатите заказ курьеру. Если мы привезли самокат 8 мая в 20:30, суточная аренда закончится 9 мая в 20:30.", text);
     }
 
     @Test
     public void zakazSejchasTest() {
-        WebElement element4 = driver.findElement(zakazSejchas);
-        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView();", element4);
-        element4.click();
-        String text4 = driver.findElement(zakazSejchasText).getText();
-        assertEquals("Только начиная с завтрашнего дня. Но скоро станем расторопнее.", text4);
+        WebElement element = driver.findElement(zakazSejchas);
+        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView();", element);
+        element.click();
+        new WebDriverWait(driver, Duration.ofSeconds(2))
+                .until(ExpectedConditions.elementToBeClickable(zakazSejchasText));
+        String text = driver.findElement(zakazSejchasText).getText();
+        assertEquals("Только начиная с завтрашнего дня. Но скоро станем расторопнее.", text);
     }
 
     @Test
     public void prodlitTest() {
-        WebElement element5 = driver.findElement(prodlit);
-        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView();", element5);
-        element5.click();
-        String text5 = driver.findElement(prodlitText).getText();
-        assertEquals("Пока что нет! Но если что-то срочное — всегда можно позвонить в поддержку по красивому номеру 1010.", text5);
+        WebElement element = driver.findElement(prodlit);
+        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView();", element);
+        element.click();
+        new WebDriverWait(driver, Duration.ofSeconds(2))
+                .until(ExpectedConditions.elementToBeClickable(prodlitText));
+        String text = driver.findElement(prodlitText).getText();
+        assertEquals("Пока что нет! Но если что-то срочное — всегда можно позвонить в поддержку по красивому номеру 1010.", text);
     }
 
     @Test
     public void zaryadkaTest() {
-        WebElement element6 = driver.findElement(zaryadka);
-        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView();", element6);
-        element6.click();
-        String text6 = driver.findElement(zaryadkaText).getText();
-        assertEquals("Самокат приезжает к вам с полной зарядкой. Этого хватает на восемь суток — даже если будете кататься без передышек и во сне. Зарядка не понадобится.", text6);
+        WebElement element = driver.findElement(zaryadka);
+        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView();", element);
+        element.click();
+        new WebDriverWait(driver, Duration.ofSeconds(2))
+                .until(ExpectedConditions.elementToBeClickable(zaryadkaText));
+        String text = driver.findElement(zaryadkaText).getText();
+        assertEquals("Самокат приезжает к вам с полной зарядкой. Этого хватает на восемь суток — даже если будете кататься без передышек и во сне. Зарядка не понадобится.", text);
     }
 
     @Test
     public void otmenaTest() {
-        WebElement element7 = driver.findElement(otmena);
-        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView();", element7);
-        element7.click();
-        String text7 = driver.findElement(otmenaText).getText();
-        assertEquals("Да, пока самокат не привезли. Штрафа не будет, объяснительной записки тоже не попросим. Все же свои.", text7);
+        WebElement element = driver.findElement(otmena);
+        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView();", element);
+        element.click();
+        new WebDriverWait(driver, Duration.ofSeconds(2))
+                .until(ExpectedConditions.elementToBeClickable(otmenaText));
+        String text = driver.findElement(otmenaText).getText();
+        assertEquals("Да, пока самокат не привезли. Штрафа не будет, объяснительной записки тоже не попросим. Все же свои.", text);
     }
 
     @Test
     public void mkadTest() {
-        WebElement element8 = driver.findElement(mkad);
-        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView();", element8);
-        element8.click();
-        String text8 = driver.findElement(mkadText).getText();
-        assertEquals("Да, обязательно. Всем самокатов! И Москве, и Московской области.", text8);
+        WebElement element = driver.findElement(mkad);
+        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView();", element);
+        element.click();
+        new WebDriverWait(driver, Duration.ofSeconds(2))
+                .until(ExpectedConditions.elementToBeClickable(mkadText));
+        String text = driver.findElement(mkadText).getText();
+        assertEquals("Да, обязательно. Всем самокатов! И Москве, и Московской области.", text);
         }
     }
