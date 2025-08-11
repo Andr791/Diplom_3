@@ -1,3 +1,5 @@
+package page;
+
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
@@ -7,14 +9,13 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
-import java.util.concurrent.TimeUnit;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class General {
+public class GeneralPage {
     private WebDriver driver;
     //конструктор класса
-    public General(WebDriver driver){
+    public GeneralPage(WebDriver driver){
         this.driver = driver;
     }
     // Сколько это стоит? И как оплатить?
