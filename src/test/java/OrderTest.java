@@ -3,9 +3,9 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import page.FooterPage;
 import page.OrderPage;
 
 import java.util.stream.Stream;
@@ -16,25 +16,24 @@ public class OrderTest {
 
     @BeforeEach
     public void tearUp() {
-        //   Закрыть браузер
-        driver = new ChromeDriver();
+       driver = new ChromeDriver();
         driver.manage().window().maximize();
         driver.get("https://qa-scooter.praktikum-services.ru/");
+        FooterPage footerPage = new FooterPage(driver);
+        footerPage.cookieButtonTest();
     }
 
     @ParameterizedTest
     @MethodSource("testData")
-    public void testUp(String username, String usersurname, String useraddress, int usermetro, String usertelephone, String userWhenToBring, String userRentalPeriod, String userColor, String userComment) {
+    public void testOrderUp(String username, String usersurname, String useraddress, int usermetro, String usertelephone, String userWhenToBring, String userRentalPeriod, String userColor, String userComment) {
         OrderPage orderPage = new OrderPage(driver);
-        driver.findElement(By.className("App_CookieButton__3cvqF")).click();
         orderPage.orderFlowUp(username, usersurname, useraddress, usermetro, usertelephone, userWhenToBring, userRentalPeriod, userColor, userComment);
     }
 
     @ParameterizedTest
     @MethodSource("testData")
-    public void testDown(String username, String usersurname, String useraddress, int usermetro, String usertelephone, String userWhenToBring, String userRentalPeriod, String userColor, String userComment) {
+    public void testOrderDown(String username, String usersurname, String useraddress, int usermetro, String usertelephone, String userWhenToBring, String userRentalPeriod, String userColor, String userComment) {
         OrderPage orderPage = new OrderPage(driver);
-        driver.findElement(By.className("App_CookieButton__3cvqF")).click();
         orderPage.orderFlowDown(username, usersurname, useraddress, usermetro, usertelephone, userWhenToBring, userRentalPeriod, userColor, userComment);
     }
 
