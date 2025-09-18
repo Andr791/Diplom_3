@@ -1,3 +1,6 @@
+package tests;
+
+import driver.DriverExtension;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.extension.RegisterExtension;
@@ -19,7 +22,7 @@ import java.util.stream.Stream;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static page.GeneralPage.*;
 
-public class VoprosyTest {
+public class RegisterTest {
     @RegisterExtension
     private DriverExtension ext = new DriverExtension();
     private WebDriver driver;

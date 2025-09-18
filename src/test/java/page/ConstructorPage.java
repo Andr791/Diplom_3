@@ -3,10 +3,10 @@ package page;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
-public class GeneralPage {
+public class ConstructorPage {
     private WebDriver driver;
     //конструктор класса
-    public GeneralPage(WebDriver driver){
+    public ConstructorPage(WebDriver driver){
         this.driver = driver;
     }
     // Сколько это стоит? И как оплатить?

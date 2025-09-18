@@ -1,3 +1,6 @@
+package tests;
+
+import driver.DriverExtension;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.extension.RegisterExtension;
@@ -13,7 +16,7 @@ import java.sql.Driver;
 import java.util.stream.Stream;
 
 
-public class OrderTest {
+public class LoginTest {
     @RegisterExtension
     private DriverExtension ext = new DriverExtension();
     private WebDriver driver;

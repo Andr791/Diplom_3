@@ -9,10 +9,10 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 
-public class OrderPage {
+public class LkPage {
     private WebDriver driver;
     //конструктор класса
-    public OrderPage(WebDriver driver){
+    public LkPage(WebDriver driver){
         this.driver = driver;
     }
     // кнопка "заказать" верхняя

@@ -5,10 +5,10 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-public class FooterPage {
+public class HeaderPage {
     private WebDriver driver;
     //конструктор класса
-    public FooterPage(WebDriver driver){
+    public HeaderPage(WebDriver driver){
         this.driver = driver;
     }
     // Кнопка куки
