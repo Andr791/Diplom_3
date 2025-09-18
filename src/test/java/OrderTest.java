@@ -1,5 +1,6 @@
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.extension.RegisterExtension;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
@@ -8,15 +9,18 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import page.FooterPage;
 import page.OrderPage;
 
+import java.sql.Driver;
 import java.util.stream.Stream;
 
 
 public class OrderTest {
+    @RegisterExtension
+    private DriverExtension ext = new DriverExtension();
     private WebDriver driver;
 
     @BeforeEach
     public void tearUp() {
-       driver = new ChromeDriver();
+        driver = ext.getDriver();
         driver.manage().window().maximize();
         driver.get("https://qa-scooter.praktikum-services.ru/");
         FooterPage footerPage = new FooterPage(driver);
