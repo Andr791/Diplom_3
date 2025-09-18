@@ -8,7 +8,7 @@ public class DriverFactory {
         if ("yandex".equals(System.getProperty("browser"))) {
             initYandex();
         } else {
-            initYandex();
+            setupChrome();
         }
     }
 
