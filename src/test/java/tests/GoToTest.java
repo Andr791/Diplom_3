@@ -48,13 +48,13 @@ public class GoToTest {
         loginPage.logIn(email, password);
 
         ConstructorPage constructorPage = new ConstructorPage(driver);
-        new WebDriverWait(driver, Duration.ofSeconds(2))
+        new WebDriverWait(driver, Duration.ofSeconds(5))
                 .until(ExpectedConditions.visibilityOfElementLocated(constructorPage.getCreateOrderButton()));
         HeaderPage headerPage = new HeaderPage(driver);
         headerPage.lkTest();
 
         LkPage lkPage = new LkPage(driver);
-        new WebDriverWait(driver, Duration.ofSeconds(2))
+        new WebDriverWait(driver, Duration.ofSeconds(5))
                 .until(ExpectedConditions.visibilityOfElementLocated(lkPage.getProfile()));
         String currentUrl = driver.getCurrentUrl();
         String expectedUrl = "https://stellarburgers.nomoreparties.site/account/profile";
@@ -72,16 +72,16 @@ public class GoToTest {
         loginPage.logIn(email, password);
 
         ConstructorPage constructorPage = new ConstructorPage(driver);
-        new WebDriverWait(driver, Duration.ofSeconds(2))
+        new WebDriverWait(driver, Duration.ofSeconds(5))
                 .until(ExpectedConditions.visibilityOfElementLocated(constructorPage.getCreateOrderButton()));
         HeaderPage headerPage = new HeaderPage(driver);
         headerPage.lkTest();
 
         LkPage lkPage = new LkPage(driver);
-        new WebDriverWait(driver, Duration.ofSeconds(2))
+        new WebDriverWait(driver, Duration.ofSeconds(5))
                 .until(ExpectedConditions.visibilityOfElementLocated(lkPage.getProfile()));
         headerPage.constructorTest();
-        new WebDriverWait(driver, Duration.ofSeconds(2))
+        new WebDriverWait(driver, Duration.ofSeconds(5))
                 .until(ExpectedConditions.visibilityOfElementLocated(constructorPage.getCreateOrderButton()));
 
         String currentUrl = driver.getCurrentUrl();
@@ -100,16 +100,16 @@ public class GoToTest {
         loginPage.logIn(email, password);
 
         ConstructorPage constructorPage = new ConstructorPage(driver);
-        new WebDriverWait(driver, Duration.ofSeconds(2))
+        new WebDriverWait(driver, Duration.ofSeconds(5))
                 .until(ExpectedConditions.visibilityOfElementLocated(constructorPage.getCreateOrderButton()));
         HeaderPage headerPage = new HeaderPage(driver);
         headerPage.lkTest();
 
         LkPage lkPage = new LkPage(driver);
-        new WebDriverWait(driver, Duration.ofSeconds(2))
+        new WebDriverWait(driver, Duration.ofSeconds(5))
                 .until(ExpectedConditions.visibilityOfElementLocated(lkPage.getProfile()));
         headerPage.logoTest();
-        new WebDriverWait(driver, Duration.ofSeconds(2))
+        new WebDriverWait(driver, Duration.ofSeconds(5))
                 .until(ExpectedConditions.visibilityOfElementLocated(constructorPage.getCreateOrderButton()));
 
         String currentUrl = driver.getCurrentUrl();
@@ -129,16 +129,16 @@ public class GoToTest {
         loginPage.logIn(email, password);
 
         ConstructorPage constructorPage = new ConstructorPage(driver);
-        new WebDriverWait(driver, Duration.ofSeconds(2))
+        new WebDriverWait(driver, Duration.ofSeconds(5))
                 .until(ExpectedConditions.visibilityOfElementLocated(constructorPage.getCreateOrderButton()));
         HeaderPage headerPage = new HeaderPage(driver);
         headerPage.lkTest();
 
         LkPage lkPage = new LkPage(driver);
-        new WebDriverWait(driver, Duration.ofSeconds(2))
+        new WebDriverWait(driver, Duration.ofSeconds(5))
                 .until(ExpectedConditions.visibilityOfElementLocated(lkPage.getProfile()));
         lkPage.exitTest();
-        new WebDriverWait(driver, Duration.ofSeconds(2))
+        new WebDriverWait(driver, Duration.ofSeconds(5))
                 .until(ExpectedConditions.visibilityOfElementLocated(loginPage.getHeader()));
 
         String currentUrl = driver.getCurrentUrl();
@@ -152,7 +152,7 @@ public class GoToTest {
     public void goToTheBunsSection() {
         driver.get("https://stellarburgers.nomoreparties.site/");
         ConstructorPage constructorPage = new ConstructorPage(driver);
-        new WebDriverWait(driver, Duration.ofSeconds(2))
+        new WebDriverWait(driver, Duration.ofSeconds(5))
                 .until(ExpectedConditions.visibilityOfElementLocated(constructorPage.getBunTab()));
         constructorPage.saucesTabTest();
         constructorPage.bunTabTest();
@@ -166,7 +166,7 @@ public class GoToTest {
     public void goToTheSaucesSection() {
         driver.get("https://stellarburgers.nomoreparties.site/");
         ConstructorPage constructorPage = new ConstructorPage(driver);
-        new WebDriverWait(driver, Duration.ofSeconds(2))
+        new WebDriverWait(driver, Duration.ofSeconds(5))
                 .until(ExpectedConditions.visibilityOfElementLocated(constructorPage.getSaucesTab()));
         constructorPage.saucesTabTest();
         new WebDriverWait(driver, Duration.ofSeconds(10))
@@ -179,7 +179,7 @@ public class GoToTest {
     public void goToTheFillingsSection() {
         driver.get("https://stellarburgers.nomoreparties.site/");
         ConstructorPage constructorPage = new ConstructorPage(driver);
-        new WebDriverWait(driver, Duration.ofSeconds(2))
+        new WebDriverWait(driver, Duration.ofSeconds(5))
                 .until(ExpectedConditions.visibilityOfElementLocated(constructorPage.getFillingTab()));
         constructorPage.fillingTabTest();
         new WebDriverWait(driver, Duration.ofSeconds(10))

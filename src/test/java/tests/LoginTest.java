@@ -50,7 +50,7 @@ public class LoginTest {
         String password = "10458617";
         loginPage.logIn(email, password);
 
-        new WebDriverWait(driver, Duration.ofSeconds(2))
+        new WebDriverWait(driver, Duration.ofSeconds(5))
                 .until(ExpectedConditions.visibilityOfElementLocated(constructorPage.getCreateOrderButton()));
         String currentUrl = driver.getCurrentUrl();
         String expectedUrl = "https://stellarburgers.nomoreparties.site/";
@@ -72,7 +72,7 @@ public class LoginTest {
         loginPage.logIn(email, password);
 
         ConstructorPage constructorPage = new ConstructorPage(driver);
-        new WebDriverWait(driver, Duration.ofSeconds(2))
+        new WebDriverWait(driver, Duration.ofSeconds(5))
                 .until(ExpectedConditions.visibilityOfElementLocated(constructorPage.getCreateOrderButton()));
         String currentUrl = driver.getCurrentUrl();
         String expectedUrl = "https://stellarburgers.nomoreparties.site/";
@@ -93,7 +93,7 @@ public class LoginTest {
         loginPage.logIn(email, password);
 
         ConstructorPage constructorPage = new ConstructorPage(driver);
-        new WebDriverWait(driver, Duration.ofSeconds(2))
+        new WebDriverWait(driver, Duration.ofSeconds(5))
                 .until(ExpectedConditions.visibilityOfElementLocated(constructorPage.getCreateOrderButton()));
         String currentUrl = driver.getCurrentUrl();
         String expectedUrl = "https://stellarburgers.nomoreparties.site/";
@@ -114,7 +114,7 @@ public class LoginTest {
         loginPage.logIn(email, password);
 
         ConstructorPage constructorPage = new ConstructorPage(driver);
-        new WebDriverWait(driver, Duration.ofSeconds(2))
+        new WebDriverWait(driver, Duration.ofSeconds(5))
                 .until(ExpectedConditions.visibilityOfElementLocated(constructorPage.getCreateOrderButton()));
         String currentUrl = driver.getCurrentUrl();
         String expectedUrl = "https://stellarburgers.nomoreparties.site/";

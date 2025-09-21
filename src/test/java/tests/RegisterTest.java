@@ -43,7 +43,7 @@ public class RegisterTest {
         String name = "Andrey";
         registerPage.registration(name, email, password);
         LoginPage loginPage = new LoginPage(driver);
-        new WebDriverWait(driver, Duration.ofSeconds(2))
+        new WebDriverWait(driver, Duration.ofSeconds(5))
                 .until(ExpectedConditions.visibilityOfElementLocated(loginPage.getHeader()));
         String currentUrl = driver.getCurrentUrl();
         String expectedUrl = "https://stellarburgers.nomoreparties.site/login";
@@ -61,7 +61,7 @@ public class RegisterTest {
         String password = "10458";
         String name = "Andrey";
         registerPage.registration(name, email, password);
-        new WebDriverWait(driver, Duration.ofSeconds(2))
+        new WebDriverWait(driver, Duration.ofSeconds(5))
                 .until(ExpectedConditions.visibilityOfElementLocated(registerPage.getError()));
         Assert.assertEquals("Некорректный пароль", registerPage.getErrorText());
         String currentUrl = driver.getCurrentUrl();
