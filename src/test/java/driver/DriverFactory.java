@@ -23,7 +23,6 @@ public class DriverFactory {
 
     private void initYandex() {
         System.setProperty("webdriver.chrome.driver", "C:/f/yandexdriver.exe");
-
         driver = new ChromeDriver();
     }
 

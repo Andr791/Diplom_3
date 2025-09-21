@@ -1,58 +1,130 @@
 package tests;
 
 import driver.DriverExtension;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
+import io.qameta.allure.Description;
+import io.restassured.response.Response;
+import org.junit.jupiter.api.*;
 import org.junit.jupiter.api.extension.RegisterExtension;
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.Arguments;
-import org.junit.jupiter.params.provider.MethodSource;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-import page.FooterPage;
-import page.OrderPage;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
+import page.*;
 
-import java.sql.Driver;
-import java.util.stream.Stream;
+import java.time.Duration;
+
+import static steps.StepsApi.deleteUser;
+import static steps.StepsApi.userCreate;
 
 
 public class LoginTest {
     @RegisterExtension
     private DriverExtension ext = new DriverExtension();
     private WebDriver driver;
+    private static String accessToken;
+
+    @BeforeAll
+    public static void createUser() {
+        String email = "azxqwe1@mail.ru";
+        String password = "10458617";
+        String name = "Andrey";
+        Response response = userCreate(email, password, name);
+        accessToken = response.then().extract().body().path("accessToken");
+    }
 
     @BeforeEach
     public void tearUp() {
         driver = ext.getDriver();
         driver.manage().window().maximize();
-        driver.get("https://qa-scooter.praktikum-services.ru/");
-        FooterPage footerPage = new FooterPage(driver);
-        footerPage.cookieButtonTest();
     }
 
-    @ParameterizedTest
-    @MethodSource("testData")
-    public void testOrderUp(String username, String usersurname, String useraddress, int usermetro, String usertelephone, String userWhenToBring, String userRentalPeriod, String userColor, String userComment) {
-        OrderPage orderPage = new OrderPage(driver);
-        orderPage.orderFlowUp(username, usersurname, useraddress, usermetro, usertelephone, userWhenToBring, userRentalPeriod, userColor, userComment);
+    @Test
+    @DisplayName("вход по кнопке «Войти в аккаунт» на главной")
+    @Description("это UI-тест")
+    public void logInThroughTheMainPage() {
+        driver.get("https://stellarburgers.nomoreparties.site/");
+        ConstructorPage constructorPage = new ConstructorPage(driver);
+        constructorPage.loginTest();
+        LoginPage loginPage = new LoginPage(driver);
+        String email = "azxqwe1@mail.ru";
+        String password = "10458617";
+        loginPage.logIn(email, password);
+
+        new WebDriverWait(driver, Duration.ofSeconds(2))
+                .until(ExpectedConditions.visibilityOfElementLocated(constructorPage.getCreateOrderButton()));
+        String currentUrl = driver.getCurrentUrl();
+        String expectedUrl = "https://stellarburgers.nomoreparties.site/";
+        Assert.assertEquals(expectedUrl, currentUrl);
+
     }
 
-    @ParameterizedTest
-    @MethodSource("testData")
-    public void testOrderDown(String username, String usersurname, String useraddress, int usermetro, String usertelephone, String userWhenToBring, String userRentalPeriod, String userColor, String userComment) {
-        OrderPage orderPage = new OrderPage(driver);
-        orderPage.orderFlowDown(username, usersurname, useraddress, usermetro, usertelephone, userWhenToBring, userRentalPeriod, userColor, userComment);
+    @Test
+    @DisplayName("вход через кнопку «Личный кабинет»")
+    @Description("это UI-тест")
+    public void logInThroughYourPersonalAccount() {
+        driver.get("https://stellarburgers.nomoreparties.site/");
+        HeaderPage headerPage = new HeaderPage(driver);
+        headerPage.lkTest();
+
+        LoginPage loginPage = new LoginPage(driver);
+        String email = "azxqwe1@mail.ru";
+        String password = "10458617";
+        loginPage.logIn(email, password);
+
+        ConstructorPage constructorPage = new ConstructorPage(driver);
+        new WebDriverWait(driver, Duration.ofSeconds(2))
+                .until(ExpectedConditions.visibilityOfElementLocated(constructorPage.getCreateOrderButton()));
+        String currentUrl = driver.getCurrentUrl();
+        String expectedUrl = "https://stellarburgers.nomoreparties.site/";
+        Assert.assertEquals(expectedUrl, currentUrl);
     }
 
-    private static Stream<Arguments> testData() {
-        return Stream.of(
-                Arguments.of("Андрей", "Рожков", "Елец, Костенко, 1", 1, "+79205018745", "01.09.2025", "сутки", "чёрный жемчуг", "коммент1"),
-                Arguments.of("Иван", "Борисов", "Липецк, Центральная, 10", 2, "+74746768380", "30.09.2025", "двое суток", "серая безысходность", "коммент2")
-        );
+    @Test
+    @DisplayName("вход через кнопку в форме регистрации")
+    @Description("это UI-тест")
+    public void logInUsingTheRegistrationForm() {
+        driver.get("https://stellarburgers.nomoreparties.site/register");
+        RegisterPage registerPage = new RegisterPage(driver);
+        registerPage.loginButtonTest();
+
+        LoginPage loginPage = new LoginPage(driver);
+        String email = "azxqwe1@mail.ru";
+        String password = "10458617";
+        loginPage.logIn(email, password);
+
+        ConstructorPage constructorPage = new ConstructorPage(driver);
+        new WebDriverWait(driver, Duration.ofSeconds(2))
+                .until(ExpectedConditions.visibilityOfElementLocated(constructorPage.getCreateOrderButton()));
+        String currentUrl = driver.getCurrentUrl();
+        String expectedUrl = "https://stellarburgers.nomoreparties.site/";
+        Assert.assertEquals(expectedUrl, currentUrl);
     }
-    @AfterEach
-    public void teardown() {
-        //   Закрыть браузер
-        driver.quit();
+
+    @Test
+    @DisplayName("вход через кнопку в форме восстановления пароля")
+    @Description("это UI-тест")
+    public void logInViaTheRecoveryForm() {
+        driver.get("https://stellarburgers.nomoreparties.site/forgot-password");
+        RecoveryPage recoveryPage = new RecoveryPage(driver);
+        recoveryPage.loginTest();
+
+        LoginPage loginPage = new LoginPage(driver);
+        String email = "azxqwe1@mail.ru";
+        String password = "10458617";
+        loginPage.logIn(email, password);
+
+        ConstructorPage constructorPage = new ConstructorPage(driver);
+        new WebDriverWait(driver, Duration.ofSeconds(2))
+                .until(ExpectedConditions.visibilityOfElementLocated(constructorPage.getCreateOrderButton()));
+        String currentUrl = driver.getCurrentUrl();
+        String expectedUrl = "https://stellarburgers.nomoreparties.site/";
+        Assert.assertEquals(expectedUrl, currentUrl);
+    }
+
+    @AfterAll
+    public static void cleanup() {
+        if (accessToken != null) {
+            deleteUser(accessToken);
+        }
     }
 }
